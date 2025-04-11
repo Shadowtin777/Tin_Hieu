@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo tường Thanh Xuân Tuổi Trẻ - Lớp 12C10 </title>
+    <style>
+        .imgkichco {
+            width: 200px;
+            height: 200px;
+        }
+        .imgnen {
+            width: 400px;
+            height: 200px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Background mới với màu xanh dương nhạt */
+        body {
+            background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+
+        /* Hiệu ứng bong bóng nổi */
+        @keyframes floatingBubbles {
+            0% { transform: translateY(0) rotate(0); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .bubble {
+            position: fixed;
+            bottom: -100px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            z-index: -1;
+            animation: floatingBubbles 15s infinite linear;
+        }
+
+        .bubble:nth-child(1) { left: 10%; animation-duration: 20s; animation-delay: 0s; }
+        .bubble:nth-child(2) { left: 20%; animation-duration: 18s; animation-delay: 1s; }
+        .bubble:nth-child(3) { left: 35%; animation-duration: 16s; animation-delay: 3s; }
+        .bubble:nth-child(4) { left: 50%; animation-duration: 15s; animation-delay: 5s; }
+        .bubble:nth-child(5) { left: 65%; animation-duration: 14s; animation-delay: 7s; }
+        .bubble:nth-child(6) { left: 80%; animation-duration: 13s; animation-delay: 9s; }
+        .bubble:nth-child(7) { left: 90%; animation-duration: 12s; animation-delay: 11s; }
+
+        /* Hiệu ứng sáng lấp lánh */
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .sparkle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            z-index: -1;
+            animation: sparkle 3s infinite ease-in-out;
+        }
+
+        .container {
+            max-width: 1200px; /* Adjust for larger screens */
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1; /* Đảm bảo nội dung hiển thị trên nền */
+            background-color: rgba(255, 255, 255, 0.7); /* Thêm một lớp nền mờ cho container */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0288d1 0%, #26c6da 100%);
+            color: white;
+            padding: 15px;  /* Reduced padding */
+            text-align: center;
+            margin-bottom: 15px; /* Reduced margin */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 20px; /* Reduced font size for responsiveness */
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Content section */
+        .content-title {
+            background-color: #b3e5fc;
+            color: #01579b;
+            padding: 8px; /* Reduced padding */
+            text-align: center;
+            margin-bottom: 15px; /* Reduced margin */
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 18px; /* Reduced font size */
+        }
+        
+        .box-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 15px; /* Reduced margin */
+            gap: 15px; /* Reduced gap */
+        }
+        
+        .box {
+            border: 2px solid #29b6f6;
+            border-radius: 8px;
+            width: calc(100%); /* Modified for full width on small screens */
+            padding: 0;
+            margin-bottom: 10px; /* Reduced margin */
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .box {
+                width: calc(33.33% - 15px); /* Restore original width on larger screens */
+            }
+        }
+        
+        .box-title {
+            background-color: #29b6f6;
+            color: white;
+            padding: 8px; /* Reduced padding */
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px; /* Reduced font size */
+        }
+        
+        .box-content {
+            padding: 10px; /* Reduced padding */
+        }
+        
+        .box-image {
+            width: 100%;
+            height: 200px; /* Reduced height for smaller screens */
+            object-fit: cover;
+            margin-bottom: 8px; /* Reduced margin */
+            transition: transform 0.5s ease;
+        }
+
+        .box:hover .box-image {
+            transform: scale(1.05);
+        }
+        
+        .box-content p {
+            margin-bottom: 8px; /* Reduced margin */
+            font-size: 14px; /* Reduced font size */
+        }
+        
+        .box-content a {
+            display: inline-block;
+            background-color: #4fc3f7;
+            color: #01579b;
+            padding: 4px 8px; /* Reduced padding */
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 14px; /* Reduced font size */
+        }
+        
+        .box-content a:hover {
+            background-color: #0288d1;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Wide boxes */
+        .wide-box {
+            border: 2px solid #29b6f6;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 15px; /* Reduced margin */
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column; /* Stack elements on smaller screens */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wide-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (min-width: 768px) {
+            .wide-box {
+                flex-direction: row; /* Restore horizontal layout on larger screens */
+            }
+        }
+        
+        .wide-box-left {
+            width: 100%; /* Full width on smaller screens */
+            padding: 15px; /* Reduced padding */
+        }
+
+        @media (min-width: 768px) {
+            .wide-box-left {
+                width: 60%; /* Restore original width on larger screens */
+            }
+        }
+        
+        .wide-box-right {
+            width: 100%; /* Full width on smaller screens */
+            padding: 15px; /* Reduced padding */
+            border-left: none; /* Remove border on smaller screens */
+            border-top: 1px solid #e1f5fe; /* Add top border for separation */
+            background-color: #e1f5fe;
+        }
+
+        @media (min-width: 768px) {
+            .wide-box-right {
+                width: 40%; /* Restore original width on larger screens */
+                border-left: 1px solid #e1f5fe; /* Restore border on larger screens */
+                border-top: none; /* Remove top border on larger screens */
+            }
+        }
+        
+        .wide-box-left h3 {
+            color: #0288d1;
+            margin-bottom: 10px; /* Reduced margin */
+            padding-bottom: 5px;
+            border-bottom: 2px solid #4fc3f7;
+            font-size: 18px; /* Reduced font size */
+        }
+        
+        .wide-box-right h3 {
+            color: #0288d1;
+            margin-bottom: 10px; /* Reduced margin */
+            font-size: 16px; /* Reduced font size */
+        }
+        
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px; /* Reduced gap */
+        }
+        
+        .gallery-item {
+            width: calc(50% - 4px);
+            height: 150px; /* Reduced height for responsiveness */
+            object-fit: cover;
+            margin-bottom: 8px; /* Reduced margin */
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media section */
+        .media-section {
+            display: block; /* Thay đổi từ flex sang block để xếp chồng xuống dòng */
+            margin-bottom: 15px; /* Reduced margin */
+        }
+        
+        .media-box {
+            border: 2px solid #29b6f6;
+            border-radius: 8px;
+            background-color: white;
+            padding: 10px; /* Reduced padding */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px; /* Reduced margin */
+            transition: transform 0.3s ease;
+        }
+
+        .media-box:hover {
+            transform: translateY(-3px);
+        }
+        
+        .media-box h3 {
+            color: #0288d1;
+            margin-bottom: 10px; /* Reduced margin */
+            text-align: center;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #4fc3f7;
+            font-size: 16px; /* Reduced font size */
+        }
+        
+        .media-box-small {
+            width: 100%; /* Đổi thành 100% để mỗi phần chiếm toàn bộ chiều rộng */
+        }
+        
+        .media-box-medium {
+            width: 100%; /* Đổi thành 100% để mỗi phần chiếm toàn bộ chiều rộng */
+        }
+        
+        .media-box-large {
+            width: 100%;
+        }
+        
+        .media-placeholder {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px; /* Reduced gap */
+        }
+        
+        .media-item {
+            width: calc(50% - 4px);
+            height: 150px; /* Reduced height for responsiveness */
+            object-fit: cover;
+            margin-bottom: 8px; /* Reduced margin */
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .media-item:hover {
+            transform: scale(1.05);
+        }
+
+        @media (min-width: 576px) {
+            .media-item {
+                width: calc(33.33% - 7px);
+                height: 150px; /* Restore original height on larger screens */
+            }
+        }
+        
+        .video-item {
+            width: 100%;
+            height: auto; /* Adjust video height to maintain aspect ratio */
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        .audio-item {
+            width: 100%;
+            height: 50px; /* Reduced height of audio for better responsiveness */
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        
+        .learning-resources {
+            width: 100%;
+            padding: 10px; /* Reduced padding */
+            background-color: #e1f5fe;
+            border-radius: 4px;
+            margin-top: 10px; /* Reduced margin */
+        }
+        
+        .resource-item {
+            display: block;
+            margin-bottom: 8px; /* Reduced margin */
+            padding: 6px; /* Reduced padding */
+            background-color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0288d1;
+            transition: all 0.3s ease;
+            font-size: 14px; /* Reduced font size */
+        }
+        
+        .resource-item:hover {
+            background-color: #4fc3f7;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Comments section */
+        .comments-section {
+            border: 2px solid #29b6f6;
+            border-radius: 8px;
+            background-color: white;
+            padding: 15px; /* Reduced padding */
+            margin-bottom: 15px; /* Reduced margin */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comments-container {
+            display: flex;
+            flex-direction: column; /* Stacked layout on small screens */
+            gap: 15px; /* Reduced gap */
+        }
+        
+        .comment-form {
+            width: 100%; /* Full width on smaller screens */
+        }
+
+        @media (min-width: 768px) {
+            .comment-form {
+                width: 45%;  /* Restore original width on larger screens */
+            }
+        }
+        
+        .comment-list {
+            width: 100%; /* Full width on smaller screens */
+            padding-left: 0; /* Remove left padding on smaller screens */
+            border-left: none; /* Remove left border on smaller screens */
+            border-top: 1px solid #e1f5fe; /* Add top border for separation */
+        }
+
+        @media (min-width: 768px) {
+             .comment-list {
+                width: 55%; /* Restore original width on larger screens */
+                padding-left: 20px; /* Restore left padding on larger screens */
+                border-left: 1px solid #e1f5fe; /* Restore left border on larger screens */
+                border-top: none; /* Remove top border on larger screens */
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 10px; /* Reduced margin */
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 4px; /* Reduced margin */
+            font-weight: bold;
+            color: #0288d1;
+            font-size: 14px; /* Reduced font size */
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 6px; /* Reduced padding */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px; /* Reduced font size */
+        }
+        
+        .form-group textarea {
+            height: 80px; /* Reduced height */
+        }
+        
+        .btn {
+            background-color: #29b6f6;
+            color: white;
+            border: none;
+            padding: 6px 12px; /* Reduced padding */
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px; /* Reduced font size */
+        }
+        
+        .btn:hover {
+            background-color: #0288d1;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0288d1 0%, #26c6da 100%);
+            color: white;
+            padding: 15px; /* Reduced padding */
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 12px; /* Reduced font size */
+        }
+        
+        .footer p {
+            margin-bottom: 4px; /* Reduced margin */
+        }
+        
+        .footer-links {
+            margin-top: 8px; /* Reduced margin */
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 8px; /* Reduced margin */
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hiệu ứng nhấp nháy cải tiến */
+        @keyframes image-highlight {
+            0% { 
+                box-shadow: 0 0 10px #00b0ff; 
+                border: 2px solid #00b0ff;
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 20px #29b6f6; 
+                border: 2px solid #29b6f6;
+                transform: scale(1.05);
+            }
+            100% { 
+                box-shadow: 0 0 10px #00b0ff; 
+                border: 2px solid #00b0ff;
+                transform: scale(1);
+            }
+        }
+
+        .blink-image {
+            animation: image-highlight 2s infinite;
+            position: relative;
+        }
+
+        .blink-image::before {
+            content: '➤';
+            position: absolute;
+            top: 50%;
+            left: -20px;
+            transform: translateY(-50%) rotate(180deg);
+            color: #00b0ff;
+            font-size: 18px;
+            animation: image-highlight 2s infinite;
+        }
+
+        .blink-image::after {
+            content: '➤';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            color: #00b0ff;
+            font-size: 18px;
+            animation: image-highlight 2s infinite;
+        }
+
+        /* Hiệu ứng LED cải tiến */
+        @keyframes led-text-animation {
+            0% { 
+                color: #00b0ff; 
+                text-shadow: 0 0 8px #00b0ff, 0 0 16px #00b0ff;
+            }
+            25% { 
+                color: #2979ff; 
+                text-shadow: 0 0 8px #2979ff, 0 0 16px #2979ff;
+            }
+            50% { 
+                color: #00e5ff; 
+                text-shadow: 0 0 8px #00e5ff, 0 0 16px #00e5ff;
+            }
+            75% { 
+                color: #18ffff; 
+                text-shadow: 0 0 8px #18ffff, 0 0 16px #18ffff;
+            }
+            100% { 
+                color: #00b0ff; 
+                text-shadow: 0 0 8px #00b0ff, 0 0 16px #00b0ff;
+            }
+        }
+
+        .led-header {
+            animation: led-text-animation 3s infinite;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Hiệu ứng chữ chạy cải tiến */
+        @keyframes led-marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .pixel-led-text {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            font-family: 'Press Start 2P', monospace;
+            color: #0288d1;
+            text-transform: uppercase;
+            animation: led-marquee 15s linear infinite;
+            text-shadow: 
+                1px 1px 0 #000,
+                2px 2px 0 #01579b,
+                3px 3px 0 #01579b;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .pixel-led-text::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 100%;
+            white-space: nowrap;
+        }
+
+        .pixel-led-container {
+            background: linear-gradient(135deg, #0288d1 0%, #26c6da 100%);
+            border-radius: 8px;
+            margin-bottom: 15px; /* Reduced margin */
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pixel-led-title {
+            background-color: #29b6f6;
+            color: white;
+            text-align: center;
+            padding: 8px; /* Reduced padding */
+            font-weight: bold;
+            font-size: 14px; /* Reduced font size */
+        }
+
+        .pixel-led-text {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            font-family: 'Press Start 2P', monospace;
+            color: white;
+            text-transform: uppercase;
+            animation: led-marquee 15s linear infinite;
+            text-shadow: 
+                1px 1px 0 #000,
+                2px 2px 0 #01579b,
+                3px 3px 0 #01579b;
+            font-size: 14px; /* Reduced font size */
+            letter-spacing: 2px;
+            padding: 8px; /* Reduced padding */
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .pixel-led-text::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 100%;
+            white-space: nowrap;
+        }
+
+        /* Hiệu ứng đường dẫn 3D cho các liên kết */
+        .box-content a {
+            display: inline-block;
+            background-color: #4fc3f7;
+            color: #01579b;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            box-shadow: 0 2px 0 #0288d1;
+            position: relative;
+            top: 0;
+        }
+
+        .box-content a:hover {
+            background-color: #29b6f6;
+            color: white;
+            box-shadow: 0 4px 0 #0277bd;
+            top: -2px;
+        }
+
+        .box-content a:active {
+            box-shadow: 0 0 0 #0277bd;
+            top: 2px;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Modified Header -->
+        <header class="header">
+            <h1 class="led-header">BÁO TƯỜNG NHÓM TÍN-HIẾU</h1>
+        </header>
+
+        
+        <!-- Content Section -->
+        <section>
+            <div class="pixel-led-container">
+                <div class="pixel-led-title"><strong>CHÚC MỪNG</strong></div>
+                <div class="pixel-led-text" data-text="KỶ NIỆM 50 NĂM NGÀY GIẢI PHÓNG MIỀN NAM (30/4/1975 – 30/4/2025): TỰ HÀO DÂN TỘC – VỮNG BƯỚC TƯƠNG LAI">
+                    KỶ NIỆM 50 NĂM NGÀY GIẢI PHÓNG MIỀN NAM (30/4/1975 – 30/4/2025): TỰ HÀO DÂN TỘC – VỮNG BƯỚC TƯƠNG LAI
+                </div>
+            </div>
+            
+            
+            <div class="box-container">
+                <div class="box">
+                    <div class="box-title">GIỚI THIỆU CHUNG</div>
+                    <img class="box-image, imgnen" src="img/50nam.jpg" alt="Hình ảnh giới thiệu">
+                    <div class="box-content">Kỷ niệm 50 năm giải phóng miền Nam thống nhất đất nước
+                        <p></p>
+                        <a href="#gioi-thieu">Xem bài giới thiệu chi tiết</a>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="box-title">THEO DÒNG SỰ KIÊN</div>
+                    <img class="box-image , imgnen" src="img/anh7.jpg" alt="Hình ảnh lớp 12C10">
+                    <div class="box-content">
+                        <p>GIẢI PHÓNG MIỀN NAM THỐNG NHẤT ĐẤT NƯỚC (1954-1975): TỪ KHÁT VỌNG ĐẾN HIỆN THỰC</p>
+                        <a href="#lop-12c10">Sự kiện</a>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="box-title">THÀNH VIÊN NHÓM</div>
+                    <img class="box-image, imgnen" src="img/anh10.png" alt="Hình ảnh Tổ 3">
+                    <div class="box-content">
+                        <p>2 Thành viên</p>
+                        <a href="#thanh-vien">Khám phá thành viên</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="gioi-thieu" class="wide-box">
+                <div class="wide-box-left">
+                    <h3>Kỷ niệm 50 năm giải phóng miền Nam thống nhất đất nước</h3>
+                    <p>Vào ngày 30/4/1975, lúc 11h30 lá cờ cách mạng tung bay trên nóc Dinh Độc Lập báo hiệu chiến dịch Hồ Chí Minh đại thắng, từ đây 2 bờ sông Bến Hải (Quảng Trị) hòa về làm một, dân tộc Việt Nam đã cùng về chung mái nhà và sẽ không, mãi mãi không bao giờ có sự chia cắt nào nữa. Và anh em 2 miền Nam-Bắc sẽ cùng nhau xây dựng đất nước và đi lên Xã Hội Chủ Nghĩa vì sự nghiệp cao cả của nhân loại.
+                        Nhân dịp kỷ niệm 50 ngày giải phóng miền Nam (30/4/1975-30/4/2025), thay mặt trường THPT Nguyễn Trãi nhóm chúng em xin gửi lời biết ơn sâu sắc đến những người đã xả thân vì đất nước để cho chúng em có thể được học tập trong hòa bình như ngày hôm nay, và xin tri ân những cống hiến, hy sinh to lớn của các thế hệ đi trước vì độc lập, hòa bình và tương lai tươi sáng của dân tộc. Chúng em xin cảm ơn !</p>
+                </div>
+                <div class="wide-box-right">
+                    <h3>ẢNH KỈ NIỆM</h3>
+                    <div class="image-gallery">
+                        <img class="gallery-item, imgkichco " src="img/giaiphong.jpg" alt="Hình ảnh 1">
+                        <img class="gallery-item, imgkichco" src="img/anh1.jpg" alt="Hình ảnh 2">
+                        <img class="gallery-item, imgkichco" src="img/anh2.jpg" alt="Hình ảnh 3">
+                        <img class="gallery-item, imgkichco" src="img/anh3.jpg" alt="Hình ảnh 4">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="lop-12c10">
+            <div class="wide-box">
+                <div class="wide-box-left">
+                    <h3>Sự Kiện</h3>
+                    <p>-Sau hiệp định Geneva được ký kết vào năm 1954, đất nước ta bị chia cắt thành 2 miền tại vĩ tuyến 17. Miền Bắc được hoàn toàn giải phóng và đi lên Xã Hội Chủ Nghĩa. Còn Miền Nam, Đế quốc Mỹ thay chân Pháp tiến Miền Nam, dựng lên chính quyền tay sai thân Mỹ với ý đồ muốn biến Miền Nam Việt Nam thành thuộc địa kiểu mới và là căn cứ quân sự của Mỹ tại khu vực Đông Nam Á.</p>
+                    <p>-Dưới sự thống trị và hà khắc của chính quyền tay sai thân Mỹ, nhân dân Miền Nam đã đứng lên đấu tranh đòi thi hành hiệp định Geneva và chống lại chính sách "Tố cộng, diệt cộng" cùng với trò hề "trưng cầu dân ý" của bọn. Tàn độc hơn chúng thi hành luật 10/59 (1957), đặt "những người cộng sản" ra khỏi vòng pháp luật, "lê máy chém" khắp Miền Nam thảm sát nhiều chiến sĩ cách mạng và nhân dân Miền Nam.</p>
+                    <p>-Trước sự tàn độc ấy, quân và nhân dân Miền Nam đã đứng dậy đấu tranh chống lại chế độ tay sai thân Mỹ, mà cao trào Đông Khởi ở Bến Tre (1960) đã chứng tỏ cách mạng Miền Nam đã chuyển từ thế giữ gìn sang thế tiến công, chuyển từ khởi nghĩa từng phần sang chiến tranh cách mạng và với sự ra đời của Mặt Trận Dân Tộc Giải Phóng Miền Nam Việt Nam (20/12/1960). </p>
+                    <p>-Trải qua nhiều gian khổ cùng với khát vọng thống nhất non sông, dưới sự lãnh đạo của Đảng và sự chi viện to lớn từ hậu phương Miền, và các nước anh em Xã Hội Chủ Nghĩa, nhân dân tiến bộ trên thế giới. Quân và dân Miền Nam đã từng bước giành thắng lợi và phá tan các chiến lược của Mỹ, cùng với thắng lợi trận Điện Biên Phủ trên không (18-29/12/1972) của quân  và dân Miền Bắc. Đã buộc Mỹ ký hiệp định Paris (27/1/1973), buộc Mỹ phải rút về nước, trao trả quyền tự quyết cho dân tộc Việt Nam.</p>
+                    <p>-Sau khi "Mỹ đã cút", việc "Ngụy nhào" chỉ còn vấn đề của thời gian. Sau thắng lợi trận Phước Long (cuối 1974-đầu 1975) nhận thấy thời cơ đã đến, Đảng ta đã phát động cuộc tổng tiến công và nổi dậy mùa Xuân năm 1975. Trải qua 3 chiến dịch lớn cùng với khẩu hiệu:"Thần tốc, táo bạo, quyết thắng", thì nhân dân ta đã hoàn thành sự nghiệp giải phóng dân tộc, thống nhất đất nước vào lúc 11h30, ngày 30/4/1975. Sài Gòn được giải phóng, cờ cách mạng tung bay trong sự hân hoan vui mừng của nhân dân. Và khát vọng của non sông đã trở thành hiện thực.</p>
+                </div>
+                <div class="wide-box-right">
+                    <h3>HÌNH ẢNH MINH HỌA</h3>
+                    <div class="image-gallery">
+                        <img class="gallery-item, imgkichco" src="img/anh4.jpg" alt="Ảnh tập thể lớp 1">
+                        <img class="gallery-item, imgkichco" src="img/anh5.jpg" alt="Ảnh tập thể lớp 2">
+                        <img class="gallery-item, imgkichco" src="img/anh6.jpg" alt="Ảnh tập thể lớp 3">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="thanh-vien">
+            <div class="wide-box">
+                <div class="wide-box-left">
+                    <h3>NHÓM TÍN-HIẾU</h3>
+                    <p>Nhóm này là một nhóm nhỏ gồm 2 thành viên: Đặng Thái Tín, Nguyễn Thành Hiếu.</p>
+                    <p><strong><em>Phân công công việc trong nhóm:</em></strong></p>
+                    <p><strong>viết code:</strong> Đặng Thái Tín</p>
+                    <p><strong>Tìm nội dung và hình ảnh:</strong>Nguyễn Thành Hiếu</p>
+                </div>
+                <div class="wide-box-right">
+            </div>
+
+        </section>
+        
+
+        <section class="media-section">
+            <div class="media-box media-box-small">
+                <h3>GÓC VIDEO</h3>
+            </div>
+            <div class="media-box media-box-medium">
+                <div class="media-placeholder">
+                    <video class="video-item" controls>
+                        <source src="video/Giải Phóng Miền Nam - Tốp Ca Quân Khu 7 [Official MV]-yt.savetube.me.mp4" type="video/mp4">
+                        Trình duyệt không hỗ trợ video.
+                    </video>
+                </div>
+            </div>
+        </section>
+        <!-- Audio Section -->
+        <section class="media-section">
+            <div class="media-box media-box-large">
+                <h3>Trang web tham khảo sự kiện</h3>
+                <p>Các trang web sự kiện</p>
+                <div class="learning-resources">
+                    <a href="https://nhandan.vn/50-nam-ngay-giai-phong-mien-nam-thong-nhat-dat-nuoc-3041975-3042025-post863971.html" class="resource-item" target="_blank">50 năm ngày giải phóng miền Nam, thống nhất đất nước (30/4/1975-30/4/2025)</a>
+                    <a href="https://hochiminhcity.gov.vn/vi/w/cac-hoat-ong-ky-niem-50-nam-ngay-giai-phong-mien-nam-thong-nhat-at-nuoc-30-4-1975-30-4-2025" class="resource-item" target="_blank">Các hoạt động kỷ niệm 50 năm Ngày Giải phóng miền Nam, thống nhất đất nước (30/4/1975 – 30/4/2025)</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h3 style="text-align:center; margin-bottom:15px; color:#ff6f61; font-size:18px;">CHIA SẺ CẢM NGHĨ CỦA BẠN</h3>
+            <div class="comments-container">
+                <div class="comment-form">
+                    <h4 style="margin-bottom:10px; color:#ff6f61; font-size:16px;">Gửi lời nhắn</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Họ tên:</label>
+                            <input type="text" id="name" placeholder="Nhập họ tên của bạn">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" placeholder="Nhập email của bạn">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Lời nhắn:</label>
+                            <textarea id="message" placeholder="Nhập lời nhắn của bạn"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Gửi lời nhắn</button>
+                    </form>
+                </div> 
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 - BÁO TƯỜNG KỈ NIỆM 50 NĂM - </p>
+            <p>Email liên hệ: dangtin922@gmail.com</p>
+            <p>Được thiết kế bởi: Nhóm Báo tường của Tín-Hiếu</p>
+            <div class="footer-links">
+                <a href="#">Trang chủ</a>
+                <a href="#">Về chúng tôi</a>
+                <a href="#">Liên hệ</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
